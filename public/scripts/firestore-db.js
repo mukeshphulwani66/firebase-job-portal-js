@@ -1,6 +1,6 @@
 const userDetails  = document.querySelector('.userDetails')
 const editProfile  = document.querySelector('#editProfile')
-
+let unsubscribe
 function createUserCollection(user){
    firebase.firestore().collection('users')
    .doc(user.uid)
@@ -47,7 +47,7 @@ async function getuserInfoRealtime(userID){
       const userdocRef = await  firebase.firestore()
         .collection('users')
         .doc(userID)
-        userdocRef.onSnapshot((doc)=>{
+        unsubscribe=userdocRef.onSnapshot((doc)=>{
             if(doc.exists){
                  const userInfo = doc.data()
                     if(userInfo){
