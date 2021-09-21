@@ -46,6 +46,7 @@ async function login(e){
 
 function logout(){
     firebase.auth().signOut()
+    unsubscribe();
     
     document.querySelector('#proimg').src= "./assets/noimage.png"
 }
@@ -61,6 +62,7 @@ const unsubscribe  = firebase.auth().onAuthStateChanged((user) => {
       if(user.uid=='TSS0ckznnpM2UkjxHIxp2Y8ivFc2'){
         allUserDetails()
       }
+
      
     
     } else {
